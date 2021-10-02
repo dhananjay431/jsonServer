@@ -31,6 +31,24 @@ export class User extends Component<any, any> {
         console.log(_);
       });
   }
+  test() {
+    let f = new Faker();
+    console.log(f.test());
+    let arr = Array.from(Array(10000).keys());
+    of(...arr)
+      .pipe(
+        concatMap(d => {
+          let dt: any = f.test();
+          dt.id = d + 1;
+          dt.userId = Math.floor(Math.random() * 1001);
+          return of(dt);
+        }),
+        toArray()
+      )
+      .subscribe(_ => {
+        console.log(_);
+      });
+  }
   userClick(data: any) {
     console.log("user Click = >", new Date().getTime(), data);
 
@@ -56,17 +74,24 @@ export class User extends Component<any, any> {
         <h1> test user {this.state.name} </h1>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-sm btn-primary me-2"
           onClick={e => this.userClick(5656)}
         >
           user
         </button>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-sm btn-primary me-2"
           onClick={e => this.userPassword(5656)}
         >
           user - Pass
+        </button>
+        <button
+          type="button"
+          className="btn btn-sm btn-primary me-2"
+          onClick={e => this.test()}
+        >
+          test
         </button>
       </div>
     );

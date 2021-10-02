@@ -8,6 +8,19 @@ export class Faker {
       data: JSON.parse(JSON.stringify(userData)),
     });
   }
+  test() {
+    return {
+      word: faker.lorem.word(),
+      words: faker.lorem.words(),
+      sentence: faker.lorem.sentence(),
+      slug: faker.lorem.slug(),
+      sentences: faker.lorem.sentences(),
+      paragraph: faker.lorem.paragraph(),
+      paragraphs: faker.lorem.paragraphs(),
+      text: faker.lorem.text(),
+      lines: faker.lorem.lines(),
+    };
+  }
   userPass() {
     return {
       userName: faker.internet.userName(),
