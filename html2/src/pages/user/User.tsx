@@ -15,6 +15,22 @@ export class User extends Component<any, any> {
     console.log("qr=>", qrData);
     return from(f.userSave(qrData, "POST"));
   }
+  userPassword(data: any) {
+    let arr = Array.from(Array(1000).keys());
+    let f = new Faker();
+    of(...arr)
+      .pipe(
+        concatMap(d => {
+          let dt: any = f.userPass();
+          dt.id = d + 1;
+          return of(dt);
+        }),
+        toArray()
+      )
+      .subscribe(_ => {
+        console.log(_);
+      });
+  }
   userClick(data: any) {
     console.log("user Click = >", new Date().getTime(), data);
 
@@ -43,7 +59,14 @@ export class User extends Component<any, any> {
           className="btn btn-primary"
           onClick={e => this.userClick(5656)}
         >
-          Primary
+          user
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={e => this.userPassword(5656)}
+        >
+          user - Pass
         </button>
       </div>
     );

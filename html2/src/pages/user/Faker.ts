@@ -8,6 +8,12 @@ export class Faker {
       data: JSON.parse(JSON.stringify(userData)),
     });
   }
+  userPass() {
+    return {
+      userName: faker.internet.userName(),
+      password: faker.internet.password(8),
+    };
+  }
   getData() {
     return {
       firstName: faker.name.firstName(),
